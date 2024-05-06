@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Game Board</h1>
+        <p>Current token: <span th:text="${currentToken}"></span></p>
+        <table>
+            <tr th:each="row, rowIndex : ${board}">
+                <td th:each="cell, cellIndex : ${row}" th:text="${cell}" th:id="${'cell-' + rowIndex.index + '-' + cellIndex.index}" class="game-cell"></td>
+
+            </tr>
+        </table>
+        <p th:text="${message}"></p>
+        <form th:action="@{/play}" method="post">
+            <input type="hidden" id="numbersInput" name="numbers" value="">
+            <button type="submit" onclick="submitForm()">Submit</button>
+        </form>
+        <form th:action="@{/skip}" method="post">
+			<button type="submit">Skip</button>
+		</form>
+		<form th:action="@{/reset}" method="post">
+			<button type="submit">Reset</button>
+		</form>
+    </div>
+    <script src="/scripts.js"></script>
+</body>
+</html>
