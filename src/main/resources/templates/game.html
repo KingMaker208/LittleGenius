@@ -12,20 +12,20 @@
         <table>
             <tr th:each="row, rowIndex : ${board}">
                 <td th:each="cell, cellIndex : ${row}" th:text="${cell}" th:id="${'cell-' + rowIndex.index + '-' + cellIndex.index}" class="game-cell"></td>
-
             </tr>
         </table>
         <p th:text="${message}"></p>
-        <form th:action="@{/play}" method="post">
-            <input type="hidden" id="numbersInput" name="numbers" value="">
-            <button type="submit" onclick="submitForm()">Submit</button>
-        </form>
-        <form th:action="@{/skip}" method="post">
-			<button type="submit">Skip</button>
-		</form>
-		<form th:action="@{/reset}" method="post">
-			<button type="submit">Reset</button>
-		</form>
+        <div class="button-container">
+            <form th:action="@{/play}" method="post" style="display:none;">
+                <input type="hidden" id="numbersInput" name="numbers" value="">
+            </form>
+            <form th:action="@{/skip}" method="post">
+                <button type="submit">Skip</button>
+            </form>
+            <form th:action="@{/reset}" method="post">
+                <button type="submit">Reset</button>
+            </form>
+        </div>
     </div>
     <script src="/scripts.js"></script>
 </body>

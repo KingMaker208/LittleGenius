@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Finished</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Game Finished</h1>
+        <p>Congratulations! You have completed the game.</p>
+        <form th:action="@{/reset}" method="post">
+            <button type="submit">Play Again</button>
+        </form>
+    </div>
+</body>
+</html>

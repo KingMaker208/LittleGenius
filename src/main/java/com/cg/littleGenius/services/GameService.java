@@ -4,9 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
 import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @SessionScope // Ensures a separate game instance per session
@@ -25,7 +23,9 @@ public class GameService {
 
     private void boardInit() {
         List<Integer> numbers = new ArrayList<>(Arrays.asList(
-            1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,3,4,4,4,4,4,4,5,5,5,5,5,5,6,6,6,6,6,6,7,7,7,7,7,8,8,8,8,8,9,9,9,9,9
+            1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 
+            5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 
+            9, 9, 9, 9, 9
         ));
         Collections.shuffle(numbers);
         for (int i = 0; i < board.length; i++) {
@@ -48,13 +48,19 @@ public class GameService {
     }
 
     public boolean validateNumbers(List<Integer> numbers) {
+        System.out.println("Received numbers for validation: " + numbers);
+        System.out.println("Current token: " + currentToken);
+
         if (numbers == null || numbers.isEmpty() || currentToken == null) {
             return false;
         }
         if (!checkLinePresence(numbers)) {
+            System.out.println("Numbers do not form a straight line or valid pattern.");
             return false;
         }
-        return canFormTarget(numbers, currentToken);
+        boolean result = canFormTarget(numbers, currentToken);
+        System.out.println("Can form target result: " + result);
+        return result;
     }
 
     private boolean checkLinePresence(List<Integer> numbers) {
@@ -69,7 +75,7 @@ public class GameService {
                     }
                 }
             }
-            if (positionsMap.get(num).isEmpty()) return false;
+            if (positionsMap.get(num).isEmpty()) return false;  // If no positions found for any number, fail early
         }
 
         for (int[] start : positionsMap.get(numbers.get(0))) {
@@ -81,7 +87,7 @@ public class GameService {
         }
         return false;
     }
-    
+
     private boolean checkDirection(int[] start, int[] dir, List<Integer> numbers, Map<Integer, List<int[]>> positionsMap) {
         int x = start[0], y = start[1];
         for (int i = 1; i < numbers.size(); i++) {
@@ -93,24 +99,27 @@ public class GameService {
         }
         return true;
     }
-    
+
     private boolean canFormTarget(List<Integer> numbers, int target) {
         if (numbers.size() != 3) {
-            return false;
+            return false;  // Ensure exactly three numbers are provided.
         }
         int first = numbers.get(0);
         int second = numbers.get(1);
         int third = numbers.get(2);
+
         List<Double> possibleResults = new ArrayList<>();
         possibleResults.add((double) first * second);
         if (second != 0) {
             possibleResults.add((double) first / second);
         }
+
         for (double result : possibleResults) {
             if (Math.abs(result + third - target) < 0.0001 || Math.abs(result - third - target) < 0.0001) {
                 return true;
             }
         }
+
         return false;
     }
 
@@ -124,6 +133,15 @@ public class GameService {
 
     public void nextToken() {
         currentToken = tokenGet();
-        System.out.println("New token generated: " + currentToken); // Debug output
+    }
+
+    public void resetGame() {
+        boardInit();
+        tokensInit();
+        currentToken = tokenGet();
+    }
+
+    public boolean hasTokensLeft() {
+        return !tokens.isEmpty();
     }
 }
