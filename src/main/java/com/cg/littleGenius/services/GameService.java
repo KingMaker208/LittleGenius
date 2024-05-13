@@ -11,14 +11,17 @@ import java.util.*;
 public class GameService {
     private int[][] board = new int[7][7];
     private List<Integer> tokens = new ArrayList<>();
-    private Integer currentToken;
-    private final Random r = new Random();
+    private List<Integer> tokensCompleted = new ArrayList<>();
+    private List<Integer> tokensSkipped = new ArrayList<>();
+	private Integer currentToken;
+    private Integer points;
 
     @PostConstruct
     public void initGame() {
         boardInit();
         tokensInit();
         currentToken = tokenGet();
+        points = 0;
     }
 
     private void boardInit() {
@@ -59,7 +62,7 @@ public class GameService {
             return false;
         }
         boolean result = canFormTarget(numbers, currentToken);
-        System.out.println("Can form target result: " + result);
+        System.out.println("Can form target result: " + result + "\nPoints: "+ points);
         return result;
     }
 
@@ -116,6 +119,8 @@ public class GameService {
 
         for (double result : possibleResults) {
             if (Math.abs(result + third - target) < 0.0001 || Math.abs(result - third - target) < 0.0001) {
+            	points++;
+            	tokensCompleted.add(currentToken);
                 return true;
             }
         }
@@ -139,9 +144,28 @@ public class GameService {
         boardInit();
         tokensInit();
         currentToken = tokenGet();
+        points = 0;
+        tokensCompleted.clear();
+        tokensSkipped.clear();
     }
 
     public boolean hasTokensLeft() {
         return !tokens.isEmpty();
     }
+
+	public Integer getPoints() {
+		return points;
+	}
+
+	public List<Integer> getTokensCompleted() {
+		return tokensCompleted;
+	}
+
+	public List<Integer> getTokensSkipped() {
+		return tokensSkipped;
+	}
+	
+	public void addTokenSkipped() {
+		tokensSkipped.add(currentToken);
+	}
 }

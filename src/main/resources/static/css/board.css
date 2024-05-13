@@ -1,0 +1,22 @@
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.game-cell {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    font-size: 20px;
+    color: #333;
+    background-color: #eaeaea;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+.game-cell.selected {
+    background-color: #84c1ff;
+    color: #ffffff;
+}

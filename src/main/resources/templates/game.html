@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/board.css">
+<link rel="stylesheet" href="/css/buttons.css">
+<link rel="stylesheet" href="/css/responsive.css">
+
 </head>
 <body>
     <div class="game-container">
@@ -14,7 +19,10 @@
                 <td th:each="cell, cellIndex : ${row}" th:text="${cell}" th:id="${'cell-' + rowIndex.index + '-' + cellIndex.index}" class="game-cell"></td>
             </tr>
         </table>
+        <section class="message">
+			
         <p th:text="${message}"></p>
+		</section>
         <div class="button-container">
             <form th:action="@{/play}" method="post" style="display:none;">
                 <input type="hidden" id="numbersInput" name="numbers" value="">
@@ -26,7 +34,20 @@
                 <button type="submit">Reset</button>
             </form>
         </div>
+        <div class="points-container">
+        <h1 th:text="${points}"></h1>
+        </div>
     </div>
+    <div class="tokens-container>">
+    <div class="completed-container">
+		<h4>Tokens Completed</h4>
+		<p th:text="${tokensCompleted}"></p>
+	</div>
+    <div class="skipped-container">
+		<h4>Tokens Skipped</h4>
+		<p th:text="${tokensSkipped}"></p>
+	</div>
+	</div>
     <script src="/scripts.js"></script>
 </body>
 </html>

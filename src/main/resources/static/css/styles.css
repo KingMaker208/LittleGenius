@@ -4,49 +4,41 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
 }
 
-.game-container {
+.game-container{
     text-align: center;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 600px;
 }
-
-table {
-    margin: 20px auto;
-    border-collapse: collapse;
+.tokens-container {
+	margin: 10%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 600px;
+    max-height: 600px;
 }
-
-.game-cell {
-    width: 50px;
-    height: 50px;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.completed-container, .skipped-container {
+	margin: 10%;
+	background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    min-width: 300px;
+    min-height: 200px;
+    max-width: 300px;
+    max-height: 600px;
 }
-
-.game-cell.selected {
-    background-color: #add8e6;
-}
-
-.button-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
+.message {
+	display: block;
+	min-height: 25px;
 }

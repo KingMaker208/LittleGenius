@@ -20,17 +20,24 @@ public class GameController {
 
     @GetMapping
     public String game(Model model) {
+    	 model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
+         model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().toString().replace('[', ' ').replace(']', ' ' ));
         if (!gameService.hasTokensLeft()) {
             return "finish";
         }
         model.addAttribute("board", gameService.getBoard());
         model.addAttribute("currentToken", gameService.getCurrentToken());
+        model.addAttribute("points", gameService.getPoints());
+
         return "game";
     }
 
     @PostMapping("/play")
     public String play(@RequestParam("numbers") List<Integer> numbers, Model model) {
         boolean correct = gameService.validateNumbers(numbers);
+        
+        model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
+        model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().toString().replace('[', ' ').replace(']', ' ' ));
         if (correct) {
             gameService.nextToken();
         }
@@ -39,18 +46,25 @@ public class GameController {
         }
         model.addAttribute("board", gameService.getBoard());
         model.addAttribute("currentToken", gameService.getCurrentToken());
+        model.addAttribute("points", gameService.getPoints());
+        
         model.addAttribute("message", correct ? "Correct selection and order! Well done." : "Incorrect selection or order. Try again.");
         return "game";
     }
 
     @PostMapping("/skip")
     public String skip(Model model) {
+    	gameService.addTokenSkipped();
         gameService.nextToken();
+        model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
+        model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().replace('[', ' ').replace(']', ' ' ));
         if (!gameService.hasTokensLeft()) {
             return "finish";
         }
         model.addAttribute("board", gameService.getBoard());
         model.addAttribute("currentToken", gameService.getCurrentToken());
+        model.addAttribute("points", gameService.getPoints());
+       
         model.addAttribute("message", "Skipped!");
         return "game";
     }

@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Game Finished</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/board.css">
+<link rel="stylesheet" href="/css/buttons.css">
+<link rel="stylesheet" href="/css/responsive.css">
+
 </head>
 <body>
     <div class="game-container">
@@ -12,6 +17,14 @@
         <form th:action="@{/reset}" method="post">
             <button type="submit">Play Again</button>
         </form>
+        <div>
+		<h2>Tokens Completed</h2>
+		<p th:text="${tokensCompleted}"></p>
+	</div>
+    <div>
+		<h2>Tokens Skipped</h2>
+		<p th:text="${tokensSkipped}"></p>
+	</div>
     </div>
 </body>
 </html>
