@@ -38,6 +38,7 @@ public class GameController {
         
         model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
         model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().toString().replace('[', ' ').replace(']', ' ' ));
+        model.addAttribute("points", gameService.getPoints());
         if (correct) {
             gameService.nextToken();
         }
@@ -46,7 +47,7 @@ public class GameController {
         }
         model.addAttribute("board", gameService.getBoard());
         model.addAttribute("currentToken", gameService.getCurrentToken());
-        model.addAttribute("points", gameService.getPoints());
+        
         
         model.addAttribute("message", correct ? "Correct selection and order! Well done." : "Incorrect selection or order. Try again.");
         return "game";
@@ -58,12 +59,13 @@ public class GameController {
         gameService.nextToken();
         model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
         model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().replace('[', ' ').replace(']', ' ' ));
+        model.addAttribute("points", gameService.getPoints());
         if (!gameService.hasTokensLeft()) {
             return "finish";
         }
         model.addAttribute("board", gameService.getBoard());
         model.addAttribute("currentToken", gameService.getCurrentToken());
-        model.addAttribute("points", gameService.getPoints());
+        
        
         model.addAttribute("message", "Skipped!");
         return "game";
