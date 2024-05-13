@@ -2,13 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Game</title>
+    <title>Game Board</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.css">
-<link rel="stylesheet" href="/css/board.css">
-<link rel="stylesheet" href="/css/buttons.css">
-<link rel="stylesheet" href="/css/responsive.css">
-
 </head>
 <body>
     <div class="game-container">
@@ -20,9 +16,8 @@
             </tr>
         </table>
         <section class="message">
-			
-        <p th:text="${message}"></p>
-		</section>
+            <p th:text="${message}"></p>
+        </section>
         <div class="button-container">
             <form th:action="@{/play}" method="post" style="display:none;">
                 <input type="hidden" id="numbersInput" name="numbers" value="">
@@ -35,19 +30,20 @@
             </form>
         </div>
         <div class="points-container">
-        <h1 th:text="${points}"></h1>
+            <h4>Points</h4>
+            <p class="points" th:text="${points}"></p>
         </div>
     </div>
-    <div class="tokens-container>">
-    <div class="completed-container">
-		<h4>Tokens Completed</h4>
-		<p th:text="${tokensCompleted}"></p>
-	</div>
-    <div class="skipped-container">
-		<h4>Tokens Skipped</h4>
-		<p th:text="${tokensSkipped}"></p>
-	</div>
-	</div>
+    <div class="tokens-container">
+        <div class="completed-container">
+            <h5>Tokens Completed</h5>
+            <p th:text="${tokensCompleted}"></p>
+        </div>
+        <div class="skipped-container">
+            <h5>Tokens Skipped</h5>
+            <p th:text="${tokensSkipped}"></p>
+        </div>
+    </div>
     <script src="/scripts.js"></script>
 </body>
 </html>
