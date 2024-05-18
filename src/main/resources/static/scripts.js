@@ -51,7 +51,21 @@ function resetSelections() {
     updateNumbersInput();
 }
 
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+}
+
+function loadDarkMode() {
+    const darkMode = localStorage.getItem('darkMode') === 'true';
+    if (darkMode) {
+        document.body.classList.add('dark-mode');
+        document.getElementById('darkModeToggle').checked = true;
+    }
+}
+
 window.onload = function() {
+    loadDarkMode();
     document.querySelectorAll('td').forEach(cell => {
         cell.addEventListener('click', function() {
             selectNumber(this);

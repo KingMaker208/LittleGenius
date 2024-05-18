@@ -8,6 +8,97 @@ body {
     margin: 0;
 }
 
+body.dark-mode {
+    background-color: #2e2e2e;
+    color: #ffffff;
+}
+
+body.dark-mode .game-container, 
+body.dark-mode .completed-container, 
+body.dark-mode .skipped-container {
+    background-color: #424242;
+    color: #ffffff;
+}
+
+body.dark-mode .game-cell {
+    background-color: #555555;
+    color: #ffffff;
+}
+
+body.dark-mode .game-cell.selected {
+    background-color: #1e88e5;
+    color: #ffffff;
+}
+
+body.dark-mode button {
+    background-color: #666666;
+    color: #ffffff;
+}
+
+body.dark-mode button:hover {
+    background-color: #888888;
+}
+
+body.dark-mode .message p {
+    color: #ffffff;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle input {
+    display: none;
+}
+
+.theme-toggle label {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle label::after {
+    content: "";
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+.theme-toggle input:checked + label {
+    background-color: #007bff;
+}
+
+.theme-toggle input:checked + label::after {
+    transform: translateX(25px);
+}
+
+.theme-toggle label::before {
+    content: 'Dark Mode';
+    position: absolute;
+    left: -80px;
+    top: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+body.dark-mode .theme-toggle label::before {
+    color: #fff;
+}
+
 .game-container {
     display: flex;
     flex-direction: column;

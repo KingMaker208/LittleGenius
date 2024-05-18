@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+    <div class="theme-toggle">
+        <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+        <label for="darkModeToggle">Dark Mode</label>
+    </div>
     <div class="game-container">
         <h1>Game Board</h1>
         <p>Current token: <span th:text="${currentToken}"></span></p>
