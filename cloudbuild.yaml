@@ -1,0 +1,6 @@
+steps:
+- name: 'gcr.io/cloud-builders/mvn'
+  args: ['clean', 'package']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', 'target/littleGenius-0.0.1-SNAPSHOT.jar']
+timeout: '1600s'
