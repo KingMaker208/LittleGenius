@@ -20,8 +20,8 @@ public class GameController {
 
     @GetMapping
     public String game(Model model) {
-        model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
-        model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().toString().replace('[', ' ').replace(']', ' ' ));
+    	 model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
+         model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().toString().replace('[', ' ').replace(']', ' ' ));
         if (!gameService.hasTokensLeft()) {
             return "finish";
         }
@@ -55,7 +55,7 @@ public class GameController {
 
     @PostMapping("/skip")
     public String skip(Model model) {
-        gameService.addTokenSkipped();
+    	gameService.addTokenSkipped();
         gameService.nextToken();
         model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
         model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().replace('[', ' ').replace(']', ' ' ));

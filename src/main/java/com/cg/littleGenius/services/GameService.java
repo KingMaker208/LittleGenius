@@ -13,7 +13,7 @@ public class GameService {
     private List<Integer> tokens = new ArrayList<>();
     private List<Integer> tokensCompleted = new ArrayList<>();
     private List<Integer> tokensSkipped = new ArrayList<>();
-    private Integer currentToken;
+	private Integer currentToken;
     private Integer points;
 
     @PostConstruct
@@ -119,8 +119,8 @@ public class GameService {
 
         for (double result : possibleResults) {
             if (Math.abs(result + third - target) < 0.0001 || Math.abs(result - third - target) < 0.0001) {
-                points++;
-                tokensCompleted.add(currentToken);
+            	points++;
+            	tokensCompleted.add(currentToken);
                 return true;
             }
         }
@@ -153,19 +153,19 @@ public class GameService {
         return !tokens.isEmpty();
     }
 
-    public Integer getPoints() {
-        return points;
-    }
+	public Integer getPoints() {
+		return points;
+	}
 
-    public List<Integer> getTokensCompleted() {
-        return tokensCompleted;
-    }
+	public List<Integer> getTokensCompleted() {
+		return tokensCompleted;
+	}
 
-    public List<Integer> getTokensSkipped() {
-        return tokensSkipped;
-    }
-
-    public void addTokenSkipped() {
-        tokensSkipped.add(currentToken);
-    }
+	public List<Integer> getTokensSkipped() {
+		return tokensSkipped;
+	}
+	
+	public void addTokenSkipped() {
+		tokensSkipped.add(currentToken);
+	}
 }
