@@ -168,4 +168,12 @@ public class GameService {
     public void addTokenSkipped() {
         tokensSkipped.add(currentToken);
     }
+
+    // New method to calculate the progress percentage
+    public int getProgressPercentage() {
+        int totalTokens = 50; // Total tokens
+        int completedTokens = tokensCompleted.size();
+        int skippedTokens = tokensSkipped.size();
+        return (completedTokens + skippedTokens) * 100 / totalTokens;
+    }
 }

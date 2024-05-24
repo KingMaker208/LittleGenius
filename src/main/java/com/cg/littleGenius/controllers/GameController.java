@@ -28,6 +28,7 @@ public class GameController {
         model.addAttribute("board", gameService.getBoard());
         model.addAttribute("currentToken", gameService.getCurrentToken());
         model.addAttribute("points", gameService.getPoints());
+        model.addAttribute("progress", gameService.getProgressPercentage()); // Add progress percentage to the model
 
         return "game";
     }
@@ -39,6 +40,7 @@ public class GameController {
         model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
         model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().toString().replace('[', ' ').replace(']', ' ' ));
         model.addAttribute("points", gameService.getPoints());
+        model.addAttribute("progress", gameService.getProgressPercentage()); // Add progress percentage to the model
         if (correct) {
             gameService.nextToken();
         }
@@ -60,6 +62,7 @@ public class GameController {
         model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
         model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().replace('[', ' ').replace(']', ' ' ));
         model.addAttribute("points", gameService.getPoints());
+        model.addAttribute("progress", gameService.getProgressPercentage()); // Add progress percentage to the model
         if (!gameService.hasTokensLeft()) {
             return "finish";
         }

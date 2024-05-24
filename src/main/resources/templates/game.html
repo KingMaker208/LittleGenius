@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Game Board</title>
+    <title>Little Genius</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -12,11 +12,15 @@
         <label for="darkModeToggle"></label>
     </div>
     <div class="game-container">
-        <h1>Game Board</h1>
-        <div class="current-token-badge">
-            <span>Current Token:</span>
-            <div class="current-token" th:text="${currentToken}"></div>
+        <div class="progress-ring-container">
+            <svg class="progress-ring" width="120" height="120">
+                <circle class="progress-ring__circle" stroke="blue" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+            </svg>
+            <div class="current-token-circle">
+                <span th:text="${currentToken}"></span>
+            </div>
         </div>
+        
         <table>
             <tr th:each="row, rowIndex : ${board}">
                 <td th:each="cell, cellIndex : ${row}" th:text="${cell}" th:id="${'cell-' + rowIndex.index + '-' + cellIndex.index}" class="game-cell"></td>
@@ -52,5 +56,19 @@
         </div>
     </div>
     <script src="/scripts.js"></script>
+    <script>
+        function setProgress(percent) {
+            const circle = document.querySelector('.progress-ring__circle');
+            const radius = circle.r.baseVal.value;
+            const circumference = 2 * Math.PI * radius;
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference - percent / 100 * circumference;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const progress = [[${progress}]]; // Get progress percentage from the backend
+            setProgress(progress);
+        });
+    </script>
 </body>
 </html>

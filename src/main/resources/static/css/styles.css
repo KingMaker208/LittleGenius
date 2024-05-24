@@ -31,12 +31,12 @@ body.dark-mode .game-cell.selected {
 }
 
 body.dark-mode .game-cell:hover {
-    background-color: #1e88e5; /* Blue color on hover in dark mode */
+    background-color: #1e88e5;
     color: #ffffff;
 }
 
 body.dark-mode .game-cell.selected:hover {
-    background-color: #1565c0; /* Darker blue color on hover if already selected in dark mode */
+    background-color: #1565c0;
     color: #ffffff;
 }
 
@@ -120,40 +120,28 @@ body.dark-mode .theme-toggle label::before {
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     width: 90%;
     max-width: 600px;
-    margin: 20px; /* Add margin to create space */
+    margin: 20px;
 }
 
-.current-token-badge {
+.progress-ring-container {
+    position: relative;
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+}
+
+.current-token-circle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     background-color: #007bff;
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    animation: float 3s infinite;
-}
-
-.current-token-badge span {
-    margin-right: 10px;
-}
-
-.current-token {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 24px;
     font-weight: bold;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
 }
 
 .completed-container,
@@ -167,7 +155,7 @@ body.dark-mode .theme-toggle label::before {
     min-height: 330px;
     max-width: 200px;
     max-height: 300px;
-    align-self: flex-start; /* Align to the left */
+    align-self: flex-start;
 }
 
 .message {
@@ -210,11 +198,11 @@ table {
     background-color: #eaeaea;
     line-height: 40px;
     vertical-align: middle;
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    transition: background-color 0.3s;
 }
 
 .game-cell:hover {
-    background-color: #84c1ff; /* Blue color on hover in light mode */
+    background-color: #84c1ff;
     color: #ffffff;
 }
 
@@ -224,7 +212,7 @@ table {
 }
 
 .game-cell.selected:hover {
-    background-color: #0056b3; /* Darker blue color on hover if already selected in light mode */
+    background-color: #0056b3;
     color: #ffffff;
 }
 
