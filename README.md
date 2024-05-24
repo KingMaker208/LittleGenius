@@ -2,7 +2,7 @@
 Game Manual
 
 Objective:
-The objective of the game is to select three numbers from the game board such that they can be used to calculate the current token number displayed. The calculation should follow these rules:
+The objective of the game is to select three consecutive numbers from the game board such that they can be used to calculate the current token number displayed. The calculation should follow these rules:
 - Multiply or divide the first two selected numbers.
 - Add or subtract the third selected number to/from the result of the first operation to match the current token number.
 
