@@ -13,7 +13,10 @@
     </div>
     <div class="game-container">
         <h1>Game Board</h1>
-        <p>Current token: <span th:text="${currentToken}"></span></p>
+        <div class="current-token-badge">
+            <span>Current Token:</span>
+            <div class="current-token" th:text="${currentToken}"></div>
+        </div>
         <table>
             <tr th:each="row, rowIndex : ${board}">
                 <td th:each="cell, cellIndex : ${row}" th:text="${cell}" th:id="${'cell-' + rowIndex.index + '-' + cellIndex.index}" class="game-cell"></td>

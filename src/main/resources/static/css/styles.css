@@ -30,6 +30,16 @@ body.dark-mode .game-cell.selected {
     color: #ffffff;
 }
 
+body.dark-mode .game-cell:hover {
+    background-color: #1e88e5; /* Blue color on hover in dark mode */
+    color: #ffffff;
+}
+
+body.dark-mode .game-cell.selected:hover {
+    background-color: #1565c0; /* Darker blue color on hover if already selected in dark mode */
+    color: #ffffff;
+}
+
 body.dark-mode button {
     background-color: #666666;
     color: #ffffff;
@@ -113,6 +123,39 @@ body.dark-mode .theme-toggle label::before {
     margin: 20px; /* Add margin to create space */
 }
 
+.current-token-badge {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    animation: float 3s infinite;
+}
+
+.current-token-badge span {
+    margin-right: 10px;
+}
+
+.current-token {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 .completed-container,
 .skipped-container {
     margin: 20px;
@@ -167,28 +210,21 @@ table {
     background-color: #eaeaea;
     line-height: 40px;
     vertical-align: middle;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
 .game-cell:hover {
-    background-color: #d0e7ff;
-    transform: scale(1.1);
-}
-
-.game-cell.selected:hover {
-    background-color: #0056b3; /* Darker shade of blue for selected cells on hover */
-}
-
-body.dark-mode .game-cell:hover {
-    background-color: #84c1ff; /* Same blue hover effect as in light mode */
-}
-
-body.dark-mode .game-cell.selected:hover {
-    background-color: #0056b3; /* Darker shade of blue for selected cells on hover in dark mode */
+    background-color: #84c1ff; /* Blue color on hover in light mode */
+    color: #ffffff;
 }
 
 .game-cell.selected {
     background-color: #84c1ff;
+    color: #ffffff;
+}
+
+.game-cell.selected:hover {
+    background-color: #0056b3; /* Darker blue color on hover if already selected in light mode */
     color: #ffffff;
 }
 

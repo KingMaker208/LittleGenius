@@ -1,5 +1,5 @@
 body {
-   display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -9,7 +9,6 @@ body {
 }
 
 .game-container {
-   
     align-items: center;
     text-align: center;
     background-color: #ffffff;
@@ -20,13 +19,14 @@ body {
     max-width: 600px;
     margin: 20px; /* Add margin to create space */
 }
+
 .tokens-container {
-	display: flex;
+    display: flex;
     flex-direction: row;
 }
+
 .completed-container,
 .skipped-container {
-	
     margin: 20px;
     background-color: #ffffff;
     padding: 20px;
@@ -36,14 +36,14 @@ body {
     min-height: 330px;
     max-width: 200px;
     max-height: 300px;
-    align-items: center;
-    /* Align to the left */
+    align-items: center; /* Align to the left */
 }
 
 .points-container {
     display: block;
     min-height: 50px;
 }
+
 button {
     padding: 10px 20px;
     margin: 0px 20px 0px 20px;
