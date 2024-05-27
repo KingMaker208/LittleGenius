@@ -199,6 +199,7 @@ table {
     line-height: 40px;
     vertical-align: middle;
     transition: background-color 0.3s;
+    border-radius: 8px; /* Rounded corners */
 }
 
 .game-cell:hover {

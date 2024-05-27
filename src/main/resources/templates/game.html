@@ -62,11 +62,15 @@
             const radius = circle.r.baseVal.value;
             const circumference = 2 * Math.PI * radius;
             circle.style.strokeDasharray = `${circumference} ${circumference}`;
-            circle.style.strokeDashoffset = circumference - percent / 100 * circumference;
+            circle.style.strokeDashoffset = circumference - (percent / 100) * circumference;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const progress = [[${progress}]]; // Get progress percentage from the backend
+            const totalTokens = 50; // Assuming 50 is the total number of tokens
+            const tokensCompleted = [[${tokensCompleted}]].length;
+            const tokensSkipped = [[${tokensSkipped}]].length;
+            const tokensPassed = tokensCompleted + tokensSkipped;
+            const progress = (tokensPassed / totalTokens) * 100; // Calculate progress percentage
             setProgress(progress);
         });
     </script>
