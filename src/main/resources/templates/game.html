@@ -23,7 +23,7 @@
         
         <table>
             <tr th:each="row, rowIndex : ${board}">
-                <td th:each="cell, cellIndex : ${row}" th:text="${cell}" th:id="${'cell-' + rowIndex.index + '-' + cellIndex.index}" class="game-cell"></td>
+                <td th:each="cell, cellIndex : ${row}" th:text="${cell}" th:id="${'cell-' + rowIndex.index + '-' + cellIndex.index}" class="game-cell" th:attr="data-value=${cell}"></td>
             </tr>
         </table>
         <section class="message">
@@ -62,15 +62,11 @@
             const radius = circle.r.baseVal.value;
             const circumference = 2 * Math.PI * radius;
             circle.style.strokeDasharray = `${circumference} ${circumference}`;
-            circle.style.strokeDashoffset = circumference - (percent / 100) * circumference;
+            circle.style.strokeDashoffset = circumference - percent / 100 * circumference;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const totalTokens = 50; // Assuming 50 is the total number of tokens
-            const tokensCompleted = [[${tokensCompleted}]].length;
-            const tokensSkipped = [[${tokensSkipped}]].length;
-            const tokensPassed = tokensCompleted + tokensSkipped;
-            const progress = (tokensPassed / totalTokens) * 100; // Calculate progress percentage
+            const progress = [[${progress}]]; // Get progress percentage from the backend
             setProgress(progress);
         });
     </script>

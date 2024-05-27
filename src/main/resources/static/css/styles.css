@@ -195,11 +195,39 @@ table {
     display: inline-block;
     font-size: 20px;
     color: #333;
-    background-color: #eaeaea;
     line-height: 40px;
     vertical-align: middle;
     transition: background-color 0.3s;
     border-radius: 8px; /* Rounded corners */
+}
+
+/* Colors for different numbers */
+.game-cell[data-value="1"] {
+    background-color: #ffeb3b; /* Yellow */
+}
+.game-cell[data-value="2"] {
+    background-color: #8bc34a; /* Light Green */
+}
+.game-cell[data-value="3"] {
+    background-color: #00bcd4; /* Cyan */
+}
+.game-cell[data-value="4"] {
+    background-color: #ff9800; /* Orange */
+}
+.game-cell[data-value="5"] {
+    background-color: #e91e63; /* Pink */
+}
+.game-cell[data-value="6"] {
+    background-color: #9c27b0; /* Purple */
+}
+.game-cell[data-value="7"] {
+    background-color: #3f51b5; /* Indigo */
+}
+.game-cell[data-value="8"] {
+    background-color: #f44336; /* Red */
+}
+.game-cell[data-value="9"] {
+    background-color: #009688; /* Teal */
 }
 
 .game-cell:hover {
