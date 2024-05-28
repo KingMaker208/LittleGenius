@@ -14,7 +14,7 @@
     <div class="game-container">
         <div class="progress-ring-container">
             <svg class="progress-ring" width="120" height="120">
-                <circle class="progress-ring__circle" stroke="blue" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+                <circle class="progress-ring__circle" stroke="violet" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
             </svg>
             <div class="current-token-circle">
                 <span th:text="${currentToken}"></span>
@@ -34,10 +34,10 @@
                 <input type="hidden" id="numbersInput" name="numbers" value="">
             </form>
             <form th:action="@{/skip}" method="post">
-                <button type="submit">Skip</button>
+                <button type="submit" class="button">Skip</button>
             </form>
             <form th:action="@{/reset}" method="post">
-                <button type="submit">Reset</button>
+                <button type="submit" class="button">Reset</button>
             </form>
         </div>
         <div class="points-container">

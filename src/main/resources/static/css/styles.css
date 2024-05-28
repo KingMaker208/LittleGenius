@@ -3,20 +3,26 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #FB9AD1;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
 }
+body .game-container, 
+body .completed-container, 
+body .skipped-container {
+    background-color: #FFCDEA;
+    color: #000000;
+}
 
 body.dark-mode {
-    background-color: #2e2e2e;
+    background-color: #86469C;
     color: #ffffff;
 }
 
 body.dark-mode .game-container, 
 body.dark-mode .completed-container, 
 body.dark-mode .skipped-container {
-    background-color: #424242;
+    background-color: #BC7FCD;
     color: #ffffff;
 }
 
@@ -135,13 +141,16 @@ body.dark-mode .theme-toggle label::before {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #007bff;
+    background-color: #FB9AD1;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
     font-weight: bold;
+}
+.dark-mode .current-token-circle {
+	background-color: #86469C;
 }
 
 .completed-container,
@@ -203,46 +212,75 @@ table {
 
 /* Colors for different numbers */
 .game-cell[data-value="1"] {
+    background-color: #fff176; /* Yellow */
+}
+.dark-mode .game-cell[data-value="1"] {
     background-color: #ffeb3b; /* Yellow */
 }
 .game-cell[data-value="2"] {
+    background-color: #aed581; /* Light Green */
+}
+.dark-mode .game-cell[data-value="2"] {
     background-color: #8bc34a; /* Light Green */
 }
 .game-cell[data-value="3"] {
+    background-color: #4dd0e1; /* Cyan */
+}
+.dark-mode .game-cell[data-value="3"] {
     background-color: #00bcd4; /* Cyan */
 }
 .game-cell[data-value="4"] {
+    background-color: #ffb74d; /* Orange */
+}
+.dark-mode .game-cell[data-value="4"] {
     background-color: #ff9800; /* Orange */
 }
 .game-cell[data-value="5"] {
+    background-color: #f06292; /* Pink */
+}
+.dark-mode .game-cell[data-value="5"] {
     background-color: #e91e63; /* Pink */
 }
 .game-cell[data-value="6"] {
+    background-color: #ba68c8; /* Purple */
+}
+.dark-mode .game-cell[data-value="6"] {
     background-color: #9c27b0; /* Purple */
 }
 .game-cell[data-value="7"] {
+    background-color: #7986cb; /* Indigo */
+}
+.dark-mode .game-cell[data-value="7"] {
     background-color: #3f51b5; /* Indigo */
 }
 .game-cell[data-value="8"] {
+    background-color: #e57373; /* Red */
+}
+.dark-mode .game-cell[data-value="8"] {
     background-color: #f44336; /* Red */
 }
 .game-cell[data-value="9"] {
+    background-color: #4db6ac; /* Teal */
+}
+.dark-mode .game-cell[data-value="9"] {
     background-color: #009688; /* Teal */
 }
 
+
+
 .game-cell:hover {
-    background-color: #84c1ff;
     color: #ffffff;
+    border: 2px solid #000000;
 }
 
 .game-cell.selected {
-    background-color: #84c1ff;
+    background-color: #888888;
     color: #ffffff;
 }
 
 .game-cell.selected:hover {
-    background-color: #0056b3;
-    color: #ffffff;
+	background-color: #555555;
+    color: #ffffff; 
 }
 
 .button-container {
@@ -254,16 +292,21 @@ table {
 button {
     padding: 10px 20px;
     margin: 0px 20px 0px 20px;
-    background-color: #007bff;
+    background-color: #FB9AD1;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
 }
-
+.dark-mode .button{
+	background-color: #86469C;
+}
+.dark-mode .button:hover {
+	background-color: #D875C7;
+}
 button:hover {
-    background-color: #0056b3;
+    background-color: #BC7FCD;
 }
 
 .points-container {
@@ -274,5 +317,5 @@ button:hover {
 .points {
     font-size: 24px;
     font-weight: bold;
-    color: #007bff;
+    color: #86469C;
 }
