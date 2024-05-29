@@ -3,26 +3,38 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #FB9AD1;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
+}
+
+body.dark-mode {
+    background-color: #86469C;
+    color: #ffffff;
 }
 
 .game-container {
     align-items: center;
     text-align: center;
-    background-color: #ffffff;
+    background-color: #FFCDEA;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     width: 90%;
     max-width: 600px;
-    margin: 20px; /* Add margin to create space */
+    margin: 20px;
+}
+
+body.dark-mode .game-container {
+    background-color: #BC7FCD;
+    color: #ffffff;
 }
 
 .tokens-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .completed-container,
@@ -33,21 +45,26 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     min-width: 220px;
-    min-height: 330px;
-    max-width: 200px;
-    max-height: 300px;
-    align-items: center; /* Align to the left */
+    max-width: 300px;
+    align-items: center;
+}
+
+body.dark-mode .completed-container,
+body.dark-mode .skipped-container {
+    background-color: #BC7FCD;
+    color: #ffffff;
 }
 
 .points-container {
     display: block;
     min-height: 50px;
+    margin-top: 20px;
 }
 
 button {
     padding: 10px 20px;
-    margin: 0px 20px 0px 20px;
-    background-color: #007bff;
+    margin: 20px;
+    background-color: #FB9AD1;
     color: white;
     border: none;
     border-radius: 5px;
@@ -56,11 +73,23 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #BC7FCD;
+}
+
+body.dark-mode button {
+    background-color: #86469C;
+}
+
+body.dark-mode button:hover {
+    background-color: #D875C7;
 }
 
 .points {
     font-size: 24px;
     font-weight: bold;
-    color: #007bff;
+    color: #86469C;
+}
+
+body.dark-mode .points {
+    color: #FFCDEA;
 }

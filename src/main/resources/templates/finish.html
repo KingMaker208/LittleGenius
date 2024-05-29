@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Game Finished</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/finished.css">
 </head>
 <body>
+    <div class="theme-toggle">
+        <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+        <label for="darkModeToggle"></label>
+    </div>
     <div class="game-container">
         <h1>Game Finished</h1>
         <p>Congratulations! You have completed the game.</p>
@@ -27,5 +32,23 @@
             <p class="points" th:text="${points}"></p>
         </div>
     </div>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        function loadDarkMode() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                document.getElementById('darkModeToggle').checked = true;
+            }
+        }
+
+        window.onload = function() {
+            loadDarkMode();
+        };
+    </script>
 </body>
 </html>
