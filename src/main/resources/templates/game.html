@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Little Genius</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;500&family=Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -47,15 +47,17 @@
         </div>
     </div>
     <div class="tokens-container">
-        <div class="completed-container">
-            <h5>Tokens Completed</h5>
-            <p th:text="${tokensCompleted}"></p>
-        </div>
-        <div class="skipped-container">
-            <h5>Tokens Skipped</h5>
-            <p th:text="${tokensSkipped}"></p>
+        <h5>Tokens Progress</h5>
+        <div class="token-grid">
+            <!-- This will be populated by JavaScript -->
         </div>
     </div>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var tokensCompleted = /*[[${tokensCompleted}]]*/ [];
+        var tokensSkipped = /*[[${tokensSkipped}]]*/ [];
+        /*]]>*/
+    </script>
     <script src="/scripts.js"></script>
     <script>
         function setProgress(percent) {
@@ -69,6 +71,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const progress = [[${progress}]]; // Get progress percentage from the backend
             setProgress(progress);
+            updateTokenGrid();
         });
     </script>
 </body>

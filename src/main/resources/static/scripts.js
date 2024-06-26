@@ -72,11 +72,29 @@ function setProgress(percent) {
 
 function updateProgressRing() {
     const totalTokens = 50; // Assuming 50 is the total number of tokens
-    const tokensCompleted = parseInt(document.querySelector('.completed-container p').textContent.split(',').length, 10);
-    const tokensSkipped = parseInt(document.querySelector('.skipped-container p').textContent.split(',').length, 10);
-    const tokensPassed = tokensCompleted + tokensSkipped;
+    const tokensPassed = tokensCompleted.length + tokensSkipped.length;
     const progress = (tokensPassed / totalTokens) * 100; // Calculate progress percentage
     setProgress(progress);
+    updateTokenGrid();
+}
+
+function updateTokenGrid() {
+    const tokenGrid = document.querySelector('.token-grid');
+    tokenGrid.innerHTML = '';
+    
+    for (let i = 1; i <= 50; i++) {
+        const tokenCell = document.createElement('div');
+        tokenCell.classList.add('token-cell');
+        tokenCell.textContent = i;
+        
+        if (tokensCompleted.includes(i)) {
+            tokenCell.classList.add('completed');
+        } else if (tokensSkipped.includes(i)) {
+            tokenCell.classList.add('skipped');
+        }
+        
+        tokenGrid.appendChild(tokenCell);
+    }
 }
 
 window.onload = function() {
@@ -90,5 +108,5 @@ window.onload = function() {
     if (submitButton) {
         submitButton.addEventListener('click', submitForm);
     }
-    updateProgressRing(); // Call this function to update the progress ring on load
+    updateProgressRing();
 };

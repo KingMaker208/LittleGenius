@@ -20,15 +20,15 @@ public class GameController {
 
     @GetMapping
     public String game(Model model) {
-        model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
-        model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().toString().replace('[', ' ').replace(']', ' ' ));
+        model.addAttribute("tokensCompleted", gameService.getTokensCompleted());
+        model.addAttribute("tokensSkipped", gameService.getTokensSkipped());
         if (!gameService.hasTokensLeft()) {
             return "finish";
         }
         model.addAttribute("board", gameService.getBoard());
         model.addAttribute("currentToken", gameService.getCurrentToken());
         model.addAttribute("points", gameService.getPoints());
-        model.addAttribute("progress", gameService.getProgressPercentage()); // Add progress percentage to the model
+        model.addAttribute("progress", gameService.getProgressPercentage());
 
         return "game";
     }
@@ -37,10 +37,10 @@ public class GameController {
     public String play(@RequestParam("numbers") List<Integer> numbers, Model model) {
         boolean correct = gameService.validateNumbers(numbers);
         
-        model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
-        model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().toString().replace('[', ' ').replace(']', ' ' ));
+        model.addAttribute("tokensCompleted", gameService.getTokensCompleted());
+        model.addAttribute("tokensSkipped", gameService.getTokensSkipped());
         model.addAttribute("points", gameService.getPoints());
-        model.addAttribute("progress", gameService.getProgressPercentage()); // Add progress percentage to the model
+        model.addAttribute("progress", gameService.getProgressPercentage());
         if (correct) {
             gameService.nextToken();
         }
@@ -50,7 +50,6 @@ public class GameController {
         model.addAttribute("board", gameService.getBoard());
         model.addAttribute("currentToken", gameService.getCurrentToken());
         
-        
         model.addAttribute("message", correct ? "Correct selection and order! Well done." : "Incorrect selection or order. Try again.");
         return "game";
     }
@@ -59,17 +58,16 @@ public class GameController {
     public String skip(Model model) {
         gameService.addTokenSkipped();
         gameService.nextToken();
-        model.addAttribute("tokensCompleted", gameService.getTokensCompleted().toString().toString().replace('[', ' ').replace(']', ' ' ));
-        model.addAttribute("tokensSkipped", gameService.getTokensSkipped().toString().replace('[', ' ').replace(']', ' ' ));
+        model.addAttribute("tokensCompleted", gameService.getTokensCompleted());
+        model.addAttribute("tokensSkipped", gameService.getTokensSkipped());
         model.addAttribute("points", gameService.getPoints());
-        model.addAttribute("progress", gameService.getProgressPercentage()); // Add progress percentage to the model
+        model.addAttribute("progress", gameService.getProgressPercentage());
         if (!gameService.hasTokensLeft()) {
             return "finish";
         }
         model.addAttribute("board", gameService.getBoard());
         model.addAttribute("currentToken", gameService.getCurrentToken());
         
-       
         model.addAttribute("message", "Skipped!");
         return "game";
     }
