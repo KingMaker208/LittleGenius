@@ -1,10 +1,14 @@
 package com.cg.littleGenius.services;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
-
-import jakarta.annotation.PostConstruct;
-import java.util.*;
 
 @Service
 @SessionScope // Ensures a separate game instance per session
@@ -16,7 +20,10 @@ public class GameService {
     private Integer currentToken;
     private Integer points;
 
-    @PostConstruct
+    public GameService() {
+        initGame();
+    }
+
     public void initGame() {
         boardInit();
         tokensInit();
